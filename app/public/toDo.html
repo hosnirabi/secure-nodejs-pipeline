@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./frontEnd/toDo.css" />
+  </head>
+  <body>
+    <div class="addMisson">
+      <input type="text" class="missonInput" />
+      <button class="add">add</button>
+    </div>
+    <div class="box"></div>
+  </body>
+  <script type="module">
+    let missonValue = document.querySelector(".missonInput");
+    let addButton = document.querySelector(".add");
+    let box = document.querySelector(".box");
+
+    function addTodo() {
+      box.innerHTML += `
+      <div class="missonBox">
+        <span class="misson"><span>${missonValue.value}</span></span>
+      </div>
+    `;
+    }
+
+    addButton.addEventListener("click", addTodo);
+  </script>
+</html>
