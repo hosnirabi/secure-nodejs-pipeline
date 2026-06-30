@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>to do website</title>
+    <link rel="stylesheet" href="./toDo.css" />
+  </head>
+  <body>
+    <div class="addMisson">
+      <input type="text" class="missonInput" />
+      <button class="add">add</button>
+    </div>
+    <div class="box"></div>
+  </body>
+  <script type="module">
+    let missonValue = document.querySelector(".missonInput");
+    let addButton = document.querySelector(".add");
+    let box = document.querySelector(".box");
+
+    async function addToDo() {
+      const send = await fetch("http://localhost:3000/api/todo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          misson: missonValue.value,
+        }),
+      });
+    }
+
+    fetch("http://localhost:3000/api/todo")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+
+        for (let i = 0; i < data.length; i++) {
+          box.innerHTML += `
+      <div class="missonBox">
+        <span class="misson"><span>${data[i].misson}</span></span>
+      </div>
+    `;
+        }
+      });
+
+    addButton.addEventListener("click", addToDo);
+  </script>
+</html>
