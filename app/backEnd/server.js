@@ -19,6 +19,11 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 app.use("/api/todo", toDoRoutes);
 
+app.get('/admin', (req, res) => {
+    res.send('Welcome Admin');
+});
+
+
 app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "../public", "about.html"));
 });

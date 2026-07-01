@@ -35,7 +35,6 @@
     fetch("http://localhost:3000/api/todo")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
 
         for (let i = 0; i < data.length; i++) {
           box.innerHTML += `

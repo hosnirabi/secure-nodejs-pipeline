@@ -3,8 +3,8 @@ version:  "3.8"
 services:
   node-app:
     build:
-      context: ./app
-      dockerfile:  Dockerfile
+      context: ./app/backEnd
+      dockerfile:  ../Dockerfile
     container_name:  node-app
     ports:
       -  "3000:3000"
@@ -56,6 +56,28 @@ services:
     networks:
       - backend-net
   
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+
+    ports:
+      - "8080:8080"
+
+    env_file:
+      - ./app/backEnd/.env
+
+    environment:
+      - ADMIN_IP=${ADMIN_IP}
+
+    volumes:
+      - ./nginx/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+    
+    depends_on:
+      - node-app
+    
+    networks:
+      - frontend-net
+
 volumes:
   mongo-data:
 
