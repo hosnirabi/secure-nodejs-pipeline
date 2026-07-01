@@ -1,0 +1,65 @@
+version:  "3.8"
+
+services:
+  node-app:
+    build:
+      context: ./app
+      dockerfile:  Dockerfile
+    container_name:  node-app
+    ports:
+      -  "3000:3000"
+    env_file:
+      -  ./app/backEnd/.env
+    
+    depends_on:
+      mongo:
+        condition: service_healthy
+    
+    networks:
+      -  frontend-net
+      -  backend-net
+  
+  mongo:
+    image: mongo:latest
+    container_name: mongo_db
+    restart: always
+
+    env_file:
+      - ./app/backEnd/.env
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - backend-net
+
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+
+    restart: always
+
+    ports:
+      - "8081:3000"
+
+    env_file:
+      - ./app/backEnd/.env
+
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+    networks:
+      - backend-net
+  
+volumes:
+  mongo-data:
+
+networks:
+  frontend-net:
+  backend-net:
+

@@ -12,7 +12,7 @@ WORKDIR /app
 
 COPY . .
 
-Run chown -R node:node /app
+RUN chown -R node:node /app
 
 USER node 
 
