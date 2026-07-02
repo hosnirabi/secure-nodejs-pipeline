@@ -1,0 +1,24 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check that .env is not there
+        run: |
+          test ! -f app/backEnd/.env
+
+      - name: Check html
+        run: |
+          grep -q "<title>" app/public/index.html
+          grep -q "<title>" app/public/about.html

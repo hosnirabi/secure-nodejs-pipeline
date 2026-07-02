@@ -1,0 +1,38 @@
+body{
+    overflow-x:hidden;
+}
+
+.box{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.missonBox{
+    width: 60vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.misson{
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.misson span{
+    width: 90%;
+    height: 90%;
+    display: inline-block;
+    word-break: break-word;
+}
