@@ -3,8 +3,8 @@ version:  "3.8"
 services:
   node-app:
     build:
-      context: ./app/backEnd
-      dockerfile:  ../Dockerfile
+      context: ./app
+      dockerfile:  Dockerfile
     container_name:  node-app
     ports:
       -  "3000:3000"

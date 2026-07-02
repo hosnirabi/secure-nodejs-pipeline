@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 app.use("/api/todo", toDoRoutes);
 
-app.get('/admin', (req, res) => {
+app.get('/admin-panel', (req, res) => {
     res.send('Welcome Admin');
 });
 
