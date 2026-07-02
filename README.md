@@ -144,4 +144,4 @@ docker compose up --build
 
 ![admin](img/admin.png)
 
-![docker](img/admin.png)
+![docker](img/docker.png)
