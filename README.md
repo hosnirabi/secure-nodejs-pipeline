@@ -134,3 +134,14 @@ docker compose up --build
 - Nginx
 - GitHub Actions
 - Git
+
+
+![GitHub Actions](img/githubActions.png)
+
+![403 Forbidden](img/forbidden.png)
+
+![To-Do website](img/todo.png)
+
+![admin](img/admin.png)
+
+![docker](img/admin.png)
