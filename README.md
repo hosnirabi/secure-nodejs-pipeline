@@ -103,6 +103,13 @@ app/
 
   Dockerfile
 
+img/
+  admin.png
+  docker.png
+  forbidden.png
+  githubActions.png
+  todo.png
+
 nginx/
    default.conf.template
 
